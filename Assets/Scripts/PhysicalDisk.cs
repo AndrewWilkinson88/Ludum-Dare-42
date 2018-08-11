@@ -8,8 +8,6 @@ namespace deleteAfterReading
 {
     public class PhysicalDisk : MonoBehaviour
     {
-        public GameObject leftArrow;
-        public GameObject rightArrow;
 
         public Disk diskData;
 
