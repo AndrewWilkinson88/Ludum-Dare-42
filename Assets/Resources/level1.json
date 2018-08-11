@@ -10,6 +10,7 @@
   "disks": [
     {
       "start": 10,
+      "title": "disk 173",
       "to": "alpha dog",
       "from": "curious cactus",
       "text": "Our small <b>island</b> nation is looking to accquire <b>nukes</b> from the <b>US</b>.  Do you know who would have info on this?  There will be plenty of money in it for you",
@@ -17,6 +18,7 @@
     },
     {
       "start": 20,
+      "title": "disk 142",
       "to": "curious cactus",
       "from": "heart attacker",
       "text": "Friend <b>Cuba></b>.  We have determined your payment is sufficient.  You can use our <b>volcano</b> to store the items.  We will not inform <b>Russia</b>.",
@@ -24,10 +26,11 @@
     },
     {
       "start": 30,
+      "title": "disk 48",
       "to": "curious cactus",
       "from" : "alpha dog",
-      "text": "Meet us at the <b>Port</b> at <b>10 PM</b>.  We have a great deal to discuss.",
-      "keywords": [ "10 PM", "Port" ]
+      "text": "Meet us at the <b>Port</b> at <b>10 PM</b>.  We have a great <b>deal</b> to discuss.",
+      "keywords": [ "10 PM", "Port", "deal" ]
     }
   ]
 }
