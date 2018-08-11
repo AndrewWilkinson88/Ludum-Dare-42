@@ -30,11 +30,7 @@ namespace deleteAfterReading
 
             LevelData levelData = JsonUtility.FromJson<LevelData>(levelJsonText.text);
 
-            for(int i = 0; i < levelData.availableSpace; i++)
-            {
-                //TODO create the spaces on the disk to store disks
-                Debug.Log("CREATING DISK SPACE");
-            }
+            ComputerController.instance.desktopView.CreateOpenSlots(levelData.availableSpace);            
 
             foreach(Disk d in levelData.disks)
             {
