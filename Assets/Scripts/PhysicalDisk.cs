@@ -27,6 +27,7 @@ namespace DeleteAfterReading
             if (mouseIsDown)
             {
                 transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+                this.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             }
         }
 
