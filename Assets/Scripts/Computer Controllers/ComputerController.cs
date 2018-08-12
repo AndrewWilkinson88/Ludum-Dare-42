@@ -48,6 +48,8 @@ namespace DeleteAfterReading
 
         public void LoadDesktopEmail(Disk d)
         {
+            if (curMode == Mode.SOLVER)
+                return;
             curMode = Mode.DESKTOP_EMAIL;
             SetActiveScreen(emailView.gameObject);
             emailView.LoadDesktopEmail(d);
@@ -55,6 +57,8 @@ namespace DeleteAfterReading
 
         public void LoadExternalEmail(PhysicalDisk pd)
         {
+            if (curMode == Mode.SOLVER)
+                return;
             diskInDrive = pd;
             curMode = Mode.EXTERNAL_EMAIL;
             SetActiveScreen(emailView.gameObject);
@@ -63,6 +67,8 @@ namespace DeleteAfterReading
 
         public void ShowDesktop()
         {
+            if (curMode == Mode.SOLVER)
+                return;
             curMode = Mode.DESKTOP;
             SetActiveScreen(desktopView.gameObject);
             timerText.gameObject.SetActive(true);
