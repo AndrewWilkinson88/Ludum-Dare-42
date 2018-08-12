@@ -7,13 +7,14 @@ namespace DeleteAfterReading
 {
     public class ComputerController : MonoBehaviour
     {
-
         //public LevelSelect levelSelect; 
         public DesktopView desktopView;
 
         public EmailView emailView;
 
         public static ComputerController instance;
+
+        public PhysicalDisk diskInDrive;
 
         enum Mode
         {
@@ -38,11 +39,19 @@ namespace DeleteAfterReading
 
         }
 
-        public void LoadExternalEmail(Disk d)
+        public void LoadExternalEmail(PhysicalDisk pd)
         {
+            diskInDrive = pd;
             curMode = Mode.EXTERNAL_EMAIL;
             desktopView.gameObject.SetActive(false);
             emailView.gameObject.SetActive(true);
+            emailView.LoadExternalDisk(pd.diskData);
+        }
+
+        public void ShowDesktop()
+        {
+            desktopView.gameObject.SetActive(true);
+            emailView.gameObject.SetActive(false);
         }
     }
 }

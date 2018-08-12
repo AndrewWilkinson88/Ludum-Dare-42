@@ -39,25 +39,41 @@ namespace DeleteAfterReading
         void OnMouseDown()
         {
             mouseIsDown = true;
+
+            if(this == ComputerController.instance.diskInDrive)
+            {
+                ComputerController.instance.diskInDrive = null;
+                ComputerController.instance.ShowDesktop();
+            }
+            this.GetComponent<Rigidbody2D>().isKinematic = false;
         }
 
         void OnMouseUp()
         {
             mouseIsDown = false;
             //TODO checking colliders name is a terrible way to do this.  Fix it at some point if you have time!
-            if(curCollision != null && curCollision.name == "DriveTrigger")
+            if(curCollision != null && curCollision.name == "DriveTrigger" && ComputerController.instance.diskInDrive == null)
             {
-                ComputerController.instance.LoadExternalEmail(diskData);
+                this.GetComponent<Rigidbody2D>().isKinematic = true;
+                this.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                this.transform.position = curCollision.gameObject.transform.position;
+                ComputerController.instance.LoadExternalEmail(this);
             }
         }
 
         void OnTriggerEnter2D(Collider2D col)
         {
+            if (ComputerController.instance.diskInDrive == null)
+                GetComponent<SpriteRenderer>().color = Color.green;
+            else
+                GetComponent<SpriteRenderer>().color = Color.red;
             curCollision = col;
         }
 
         void OnTriggerExit2D(Collider2D col)
         {
+            GetComponent<SpriteRenderer>().color = Color.white;
+
             curCollision = null;
         }
     }

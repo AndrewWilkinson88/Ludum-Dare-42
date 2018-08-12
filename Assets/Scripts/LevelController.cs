@@ -35,11 +35,17 @@ namespace DeleteAfterReading
             foreach(Disk d in levelData.disks)
             {
                 Debug.Log(d.text);
-                PhysicalDisk pd = GameObject.Instantiate<PhysicalDisk>(diskPrefab);
-                pd.transform.parent = diskSpawner.transform;
-                pd.transform.localPosition = Vector3.zero;
-                pd.SetDisk(d);
+                StartCoroutine(SpawnDisk(d));
             }
+        }
+
+        public IEnumerator SpawnDisk(Disk d)
+        {
+            yield return new WaitForSeconds(d.start);
+            PhysicalDisk pd = GameObject.Instantiate<PhysicalDisk>(diskPrefab);
+            pd.transform.parent = diskSpawner.transform;
+            pd.transform.localPosition = Vector3.zero;
+            pd.SetDisk(d);
         }
     }
 }

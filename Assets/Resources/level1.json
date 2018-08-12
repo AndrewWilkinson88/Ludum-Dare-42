@@ -1,6 +1,6 @@
 {
   "availableTools": [ ],
-  "availableSpace": 6,
+  "availableSpace": 2,
   "timeToSolve": 120,
   "puzzle": {
     "prompt": "Someone has stolen military equipment!  Figure out who they are, what they stole, and where they hid it.",
@@ -9,7 +9,7 @@
   },
   "disks": [
     {
-      "start": 10,
+      "start": 3,
       "title": "173",
       "to": "alpha dog",
       "from": "curious cactus",
@@ -17,7 +17,7 @@
       "keywords": [ "island", "nukes", "US" ]
     },
     {
-      "start": 20,
+      "start": 7,
       "title": "142",
       "to": "curious cactus",
       "from": "heart attacker",
@@ -25,7 +25,7 @@
       "keywords": [ "volcano", "Russia", "Cuba" ]
     },
     {
-      "start": 30,
+      "start": 15,
       "title": "48",
       "to": "curious cactus",
       "from" : "alpha dog",
