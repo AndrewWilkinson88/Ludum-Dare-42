@@ -12,6 +12,8 @@ namespace DeleteAfterReading
         public PhysicalDisk diskPrefab;
         public LevelData curLevelData;
 
+        public ResultScreenController resultScreen;
+
         // Use this for initialization
         void Start()
         {

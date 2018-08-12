@@ -71,7 +71,15 @@ namespace DeleteAfterReading
             {
                 //We're done, check if its the right answer.
                 bool correct = CheckAnswer();
-                Debug.Log("YOUR ANSWER IS : " + correct);
+                //Debug.Log("YOUR ANSWER IS : " + correct);
+                if (correct)
+                {
+                    ComputerController.instance.levelController.resultScreen.ShowNewspaperSuccess(puzzle.headlineSuccess);
+                }
+                else
+                {
+                    ComputerController.instance.levelController.resultScreen.ShowNewspaperFailure(messageToSolve.text);
+                }
             }
             else
             {

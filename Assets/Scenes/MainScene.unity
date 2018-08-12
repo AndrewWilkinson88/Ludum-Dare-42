@@ -113,6 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &163330462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114634183319310474, guid: bf547a3cb84c1c24b8db744841e3ab2b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1178013766}
+  m_Script: {fileID: 11500000, guid: 4ff0aeef3b8db974385b432713bbf1a2, type: 3}
 --- !u!1 &378626638
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +640,9 @@ MonoBehaviour:
       prompt: 
       solutionPrompt: 
       keywords: []
+      headlineSuccess: 
     disks: []
+  resultScreen: {fileID: 163330462}
 --- !u!4 &1100687603
 Transform:
   m_ObjectHideFlags: 0
@@ -1044,11 +1052,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114110678008603032, guid: bf547a3cb84c1c24b8db744841e3ab2b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2132212292}
     - target: {fileID: 114313309541059286, guid: bf547a3cb84c1c24b8db744841e3ab2b,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -1078,10 +1081,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471556319698794, guid: bf547a3cb84c1c24b8db744841e3ab2b, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf547a3cb84c1c24b8db744841e3ab2b, type: 2}

@@ -11,5 +11,6 @@ namespace DeleteAfterReading.Model
         public string prompt;
         public string solutionPrompt;
         public List<string> keywords;
+        public string headlineSuccess;
     }
 }
