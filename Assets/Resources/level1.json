@@ -1,7 +1,7 @@
 {
   "availableTools": [ ],
   "availableSpace": 2,
-  "timeToSolve": 120,
+  "timeToSolve": 60,
   "puzzle": {
     "prompt": "Someone has stolen military equipment!  Figure out who they are, what they stole, and where they hid it.",
     "solutionPrompt": "[1] hid the [2] in the [3]",
