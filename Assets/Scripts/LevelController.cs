@@ -20,16 +20,15 @@ namespace DeleteAfterReading
 
     public class LevelController : MonoBehaviour
     {
+        public MainMenuView mainMenuView;
+
         public GameObject diskSpawner;
         public PhysicalDisk diskPrefab;
 
-        public SpriteRenderer fader;
-        public SpriteRenderer computerBackground;
-        public SpriteRenderer titleScreen;
-        public Color OnColor;
 
-        public TextButton mission1;
-        public TextButton mission2;
+
+        public SpriteRenderer fader;
+
 
         public GameState state = GameState.TITLE_SCREEN;
 
@@ -46,9 +45,9 @@ namespace DeleteAfterReading
         void Start()
         {
             state = GameState.TITLE_SCREEN;
-            mission1.clickHandler += SelectLevelOne;
+            mainMenuView.mission1.clickHandler += SelectLevelOne;
 
-            StartTitleScreenSequence();
+            fader.DOFade(0.0f, 2.0f).OnComplete( ()=>mainMenuView.StartTitleScreenSequence());
         }
 
         // Update is called once per frame
@@ -76,19 +75,9 @@ namespace DeleteAfterReading
             }
         }
 
-        void StartTitleScreenSequence()
-        {
-            Sequence startSequence = DOTween.Sequence();
-            startSequence.Append(fader.DOFade(0.0f, 2.0f));
-            startSequence.Append(computerBackground.DOColor(OnColor, 1.0f).SetEase(Ease.OutFlash, 15, 1));
-            startSequence.Append(titleScreen.transform.DOLocalMoveY(3.0f, 1.0f));
-            startSequence.AppendCallback( () => mission1.gameObject.SetActive(true));
-            startSequence.Play();
-        }
-
         public void SelectLevelOne()
         {
-            titleScreen.gameObject.SetActive(false);
+            mainMenuView.HideTitleScreen();
             LoadLevel(1);
         }
 
