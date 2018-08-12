@@ -32,16 +32,30 @@ namespace DeleteAfterReading
 
         }
 
-        public void LoadExternalDisk(Disk d)
+        public void LoadExternalEmail(Disk d)
         {
             to.text = "To: " + d.to;
-            from.text = "From: "+d.from;
+            from.text = "From: " + d.from;
             body.text = d.text;
 
             save.gameObject.SetActive(true);
             eject.gameObject.SetActive(true);
             close.gameObject.SetActive(false);
             delete.gameObject.SetActive(false);
+
+            currentDisk = d;
+        }
+
+        public void LoadDesktopEmail(Disk d)
+        {
+            to.text = "To: " + d.to;
+            from.text = "From: " + d.from;
+            body.text = d.text;
+
+            save.gameObject.SetActive(false);
+            eject.gameObject.SetActive(false);
+            close.gameObject.SetActive(true);
+            delete.gameObject.SetActive(true);
 
             currentDisk = d;
         }

@@ -39,13 +39,21 @@ namespace DeleteAfterReading
 
         }
 
+        public void LoadDesktopEmail(Disk d)
+        {
+            curMode = Mode.DESKTOP_EMAIL;
+            desktopView.gameObject.SetActive(false);
+            emailView.gameObject.SetActive(true);
+            emailView.LoadDesktopEmail(d);
+        }
+
         public void LoadExternalEmail(PhysicalDisk pd)
         {
             diskInDrive = pd;
             curMode = Mode.EXTERNAL_EMAIL;
             desktopView.gameObject.SetActive(false);
             emailView.gameObject.SetActive(true);
-            emailView.LoadExternalDisk(pd.diskData);
+            emailView.LoadExternalEmail(pd.diskData);
         }
 
         public void ShowDesktop()
