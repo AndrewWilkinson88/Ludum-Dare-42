@@ -1,0 +1,37 @@
+{
+  "availableTools": [ ],
+  "availableSpace": 2,
+  "timeToSolve": 60,
+  "puzzle": {
+    "prompt": "Someone has stolen military equipment!  Figure out who they are, what they stole, and where they hid it.",
+    "solutionPrompt": "[1] hid the [2] in the [3]",
+    "keywords": [ "Cuba", "nukes", "volcano" ],
+    "headlineSuccess": "Clever agent stops disaster!  Cubian Nukes discovered in volcano!"
+  },
+  "disks": [
+    {
+      "start": 3,
+      "title": "173",
+      "to": "alpha dog",
+      "from": "curious cactus",
+      "text": "Our small <color=#ff7777>island</color> nation is looking to accquire <color=#ff7777>nukes</color> from the <color=#ff7777>US</color>.  Do you know who would have info on this?  There will be plenty of money in it for you.",
+      "keywords": [ "island", "nukes", "US" ]
+    },
+    {
+      "start": 7,
+      "title": "142",
+      "to": "curious cactus",
+      "from": "heart attacker",
+      "text": "Friend <color=#ff7777>Cuba</color>.  We have determined your payment is sufficient.  You can use our <color=#ff7777>volcano</color> to store the items.  We will not inform <color=#ff7777>Russia</color>.",
+      "keywords": [ "volcano", "Russia", "Cuba" ]
+    },
+    {
+      "start": 15,
+      "title": "48",
+      "to": "curious cactus",
+      "from" : "alpha dog",
+      "text": "Meet us at the <color=#ff7777>Port</color> at <color=#ff7777>10 PM</color>.  We have a great <color=#ff7777>deal</color> to discuss.",
+      "keywords": [ "10 PM", "Port", "deal" ]
+    }
+  ]
+}
