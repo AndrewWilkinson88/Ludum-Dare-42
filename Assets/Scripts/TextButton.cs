@@ -19,12 +19,11 @@ public class TextButton : MonoBehaviour, IPointerClickHandler {
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    void Start ()
+    {
+	    if(text == null)
+        {
+            text = gameObject.GetComponent<TextMeshPro>();
+        }
 	}
 }

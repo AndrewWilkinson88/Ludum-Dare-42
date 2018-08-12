@@ -17,10 +17,10 @@ namespace DeleteAfterReading
         public Solver solverView;
 
         public static ComputerController instance;
-
         public PhysicalDisk diskInDrive;
-
         public TextButton timerText;
+
+        private float remainingTime;
 
         enum Mode
         {
@@ -40,38 +40,40 @@ namespace DeleteAfterReading
             timerText.clickHandler += HandleTimerClick;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        public void LoadDesktopEmail(Disk d)
+        public void LoadDesktopEmail(Disk disk)
         {
             if (curMode == Mode.SOLVER)
                 return;
+
             curMode = Mode.DESKTOP_EMAIL;
             SetActiveScreen(emailView.gameObject);
-            emailView.LoadDesktopEmail(d);
+            emailView.LoadDesktopEmail(disk);
         }
 
-        public void LoadExternalEmail(PhysicalDisk pd)
+        public void LoadExternalEmail(PhysicalDisk physicalDisk)
         {
             if (curMode == Mode.SOLVER)
                 return;
-            diskInDrive = pd;
+
             curMode = Mode.EXTERNAL_EMAIL;
+            diskInDrive = physicalDisk;
             SetActiveScreen(emailView.gameObject);
-            emailView.LoadExternalEmail(pd.diskData);
+            emailView.LoadExternalEmail(physicalDisk.diskData);
         }
 
         public void ShowDesktop()
         {
             if (curMode == Mode.SOLVER)
                 return;
+
             curMode = Mode.DESKTOP;
             SetActiveScreen(desktopView.gameObject);
             timerText.gameObject.SetActive(true);
+        }
+
+        public void UpdateTimer(string time)
+        {
+            timerText.text.text = time;
         }
 
         public void OpenSolver()
@@ -79,26 +81,27 @@ namespace DeleteAfterReading
             curMode = Mode.SOLVER;
             SetActiveScreen(solverView.gameObject);
             timerText.gameObject.SetActive(false);
-            solverView.SetupSolver(levelController.curLevelData.puzzle, desktopView.GetKeywords());
+            solverView.SetupSolver(levelController.currentLevel.puzzle, desktopView.GetKeywords());
         }
 
-        public void SetActiveScreen(GameObject g)
+        public void SetActiveScreen(GameObject activeView)
         {
             desktopView.gameObject.SetActive(false);
             emailView.gameObject.SetActive(false);
-            solverView.gameObject.SetActive(false);            
-            g.SetActive(true);
+            solverView.gameObject.SetActive(false);
+
+            activeView.SetActive(true);
         }
 
-        public void SaveDisk(Disk d)
+        public void SaveDisk(Disk disk)
         {
-            desktopView.SaveDisk(d);
+            desktopView.SaveDisk(disk);
             ShowDesktop();
         }
 
-        public void DeleteDisk(Disk d)
+        public void DeleteDisk(Disk disk)
         {
-            desktopView.DeleteDisk(d);
+            desktopView.DeleteDisk(disk);
             ShowDesktop();
         }
 

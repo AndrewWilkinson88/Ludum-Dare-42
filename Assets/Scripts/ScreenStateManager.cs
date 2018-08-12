@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Holoville.HOTween;
-using Holoville.HOTween.Plugins;
+using DG.Tweening;
 
 namespace DeleteAfterReading
 {
@@ -30,24 +29,16 @@ namespace DeleteAfterReading
             SetButtonVisibility();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         public void MoveLeft()
         {
-            //mainCamera.transform.position = cameraPositionLeft;
-            HOTween.To(mainCamera.transform, .25f, "position", cameraPositionLeft);
+            mainCamera.transform.DOMove(cameraPositionLeft, 0.25f);
             screenState = ScreenState.LEFT;
             SetButtonVisibility();
         }
 
         public void MoveRight()
         {
-            //mainCamera.transform.position = cameraPositionRight;
-            HOTween.To(mainCamera.transform, .25f, "position", cameraPositionRight);
+            mainCamera.transform.DOMove(cameraPositionRight, 0.25f);
             screenState = ScreenState.RIGHT;
             SetButtonVisibility();
         }
