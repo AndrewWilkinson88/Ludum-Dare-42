@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class TextButton : MonoBehaviour, IPointerClickHandler {
 
     public delegate void TextButtonClicked();
+
+    public TextMeshPro text;
 
     public TextButtonClicked clickHandler;
 
