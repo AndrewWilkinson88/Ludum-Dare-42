@@ -4,7 +4,7 @@
   "timeToSolve": 120,
   "puzzle": {
     "prompt": "Someone has stolen military equipment!  Figure out who they are, what they stole, and where they hid it.",
-    "solutionFill": "[1] hid the [2] in the [3]",
+    "solutionPrompt": "[1] hid the [2] in the [3]",
     "keywords": [ "Cuba", "nukes", "volcano" ]
   },
   "disks": [

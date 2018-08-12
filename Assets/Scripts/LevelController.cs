@@ -10,6 +10,7 @@ namespace DeleteAfterReading
     {
         public GameObject diskSpawner;
         public PhysicalDisk diskPrefab;
+        public LevelData curLevelData;
 
         // Use this for initialization
         void Start()
@@ -28,11 +29,13 @@ namespace DeleteAfterReading
             TextAsset levelJsonText = Resources.Load<TextAsset>("level" + levelNum);
             Debug.Log(levelJsonText.text);
 
-            LevelData levelData = JsonUtility.FromJson<LevelData>(levelJsonText.text);
+            curLevelData = JsonUtility.FromJson<LevelData>(levelJsonText.text);
 
-            ComputerController.instance.desktopView.CreateOpenSlots(levelData.availableSpace);            
+            Debug.Log(curLevelData.puzzle.prompt);
 
-            foreach(Disk d in levelData.disks)
+            ComputerController.instance.desktopView.CreateOpenSlots(curLevelData.availableSpace);            
+
+            foreach(Disk d in curLevelData.disks)
             {
                 Debug.Log(d.text);
                 StartCoroutine(SpawnDisk(d));

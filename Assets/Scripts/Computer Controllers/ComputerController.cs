@@ -8,20 +8,27 @@ namespace DeleteAfterReading
     public class ComputerController : MonoBehaviour
     {
         //public LevelSelect levelSelect; 
+        public LevelController levelController;
+
         public DesktopView desktopView;
 
         public EmailView emailView;
 
+        public Solver solverView;
+
         public static ComputerController instance;
 
         public PhysicalDisk diskInDrive;
+
+        public TextButton timerText;
 
         enum Mode
         {
             LEVEL_SELECT,
             DESKTOP,
             EXTERNAL_EMAIL,
-            DESKTOP_EMAIL
+            DESKTOP_EMAIL,
+            SOLVER
         }
 
         private Mode curMode = Mode.LEVEL_SELECT;
@@ -30,7 +37,7 @@ namespace DeleteAfterReading
         void Start()
         {
             instance = this;
-
+            timerText.clickHandler += HandleTimerClick;
         }
 
         // Update is called once per frame
@@ -42,8 +49,7 @@ namespace DeleteAfterReading
         public void LoadDesktopEmail(Disk d)
         {
             curMode = Mode.DESKTOP_EMAIL;
-            desktopView.gameObject.SetActive(false);
-            emailView.gameObject.SetActive(true);
+            SetActiveScreen(emailView.gameObject);
             emailView.LoadDesktopEmail(d);
         }
 
@@ -51,15 +57,31 @@ namespace DeleteAfterReading
         {
             diskInDrive = pd;
             curMode = Mode.EXTERNAL_EMAIL;
-            desktopView.gameObject.SetActive(false);
-            emailView.gameObject.SetActive(true);
+            SetActiveScreen(emailView.gameObject);
             emailView.LoadExternalEmail(pd.diskData);
         }
 
         public void ShowDesktop()
         {
-            desktopView.gameObject.SetActive(true);
+            curMode = Mode.DESKTOP;
+            SetActiveScreen(desktopView.gameObject);
+            timerText.gameObject.SetActive(true);
+        }
+
+        public void OpenSolver()
+        {
+            curMode = Mode.SOLVER;
+            SetActiveScreen(solverView.gameObject);
+            timerText.gameObject.SetActive(false);
+            solverView.SetupSolver(levelController.curLevelData.puzzle, desktopView.GetKeywords());
+        }
+
+        public void SetActiveScreen(GameObject g)
+        {
+            desktopView.gameObject.SetActive(false);
             emailView.gameObject.SetActive(false);
+            solverView.gameObject.SetActive(false);            
+            g.SetActive(true);
         }
 
         public void SaveDisk(Disk d)
@@ -72,6 +94,11 @@ namespace DeleteAfterReading
         {
             desktopView.DeleteDisk(d);
             ShowDesktop();
+        }
+
+        public void HandleTimerClick(string s)
+        {
+            OpenSolver();
         }
     }
 }

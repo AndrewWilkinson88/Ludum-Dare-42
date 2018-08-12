@@ -14,9 +14,9 @@ namespace DeleteAfterReading
         public TextMeshPro messageToSolve;
         public GameObject keywordPositioner;
 
-        private List<string> currentAnswer = new List<string>();
+        private List<string> currentAnswer;
 
-        private List<TextButton> keywordButtons = new List<TextButton>();
+        private List<TextButton> keywordButtons;
         private int keywordColumns = 3;
         private float xSpacing = 3.5f;
         private float ySpacing = .75f;
@@ -26,10 +26,10 @@ namespace DeleteAfterReading
         // Use this for initialization
         void Start()
         {
-            Puzzle p = new Puzzle();
+            /*Puzzle p = new Puzzle();
             p.solutionPrompt = "[1] something something [2] something something [3] something something [4] something something [5] something something.";
             p.keywords = new List<string>() { "test", "test", "test", "test", "test"};
-            SetupSolver(p, new List<string>() { "test", "test2", "test", "test2" , "test", "test2" , "test", "test2" , "test", "test2" , "test", "test2" , "test", "test2" });
+            SetupSolver(p, new List<string>() { "test", "test2", "test", "test2" , "test", "test2" , "test", "test2" , "test", "test2" , "test", "test2" , "test", "test2" });*/
         }
 
         // Update is called once per frame
@@ -40,6 +40,10 @@ namespace DeleteAfterReading
 
         public void SetupSolver(Puzzle p, List<string> keywords)
         {
+            currentAnswer = new List<string>();
+            
+            DeleteKeywordButtons();
+
             puzzle = p;
             messageToSolve.text = p.solutionPrompt;
 
@@ -77,6 +81,8 @@ namespace DeleteAfterReading
 
         private void ColorNextPrompt()
         {
+            Debug.Log(messageToSolve.text);
+            Debug.Log(currentAnswer.Count);
             messageToSolve.text = messageToSolve.text.Replace("[" + (currentAnswer.Count + 1) + "]", "<color=#77ff77>[" + (currentAnswer.Count + 1) + "]</color>");
         }
 
@@ -90,6 +96,18 @@ namespace DeleteAfterReading
                     return false;
             }
             return true;
+        }
+
+        private void DeleteKeywordButtons()
+        {
+            if (keywordButtons != null)
+            {
+                for (int i = keywordButtons.Count - 1; i >= 0; i--)
+                {
+                    GameObject.Destroy(keywordButtons[i].gameObject);
+                }
+            }
+            keywordButtons = new List<TextButton>();
         }
     }
 }
