@@ -28,6 +28,9 @@ namespace DeleteAfterReading
         public SpriteRenderer titleScreen;
         public Color OnColor;
 
+        public TextButton mission1;
+        public TextButton mission2;
+
         public GameState state = GameState.TITLE_SCREEN;
 
         private float missionTime = 0.0f;
@@ -43,8 +46,9 @@ namespace DeleteAfterReading
         void Start()
         {
             state = GameState.TITLE_SCREEN;
+            mission1.clickHandler += SelectLevelOne;
+
             StartTitleScreenSequence();
-            //LoadLevel(1);
         }
 
         // Update is called once per frame
@@ -78,7 +82,14 @@ namespace DeleteAfterReading
             startSequence.Append(fader.DOFade(0.0f, 2.0f));
             startSequence.Append(computerBackground.DOColor(OnColor, 1.0f).SetEase(Ease.OutFlash, 15, 1));
             startSequence.Append(titleScreen.transform.DOLocalMoveY(3.0f, 1.0f));
+            startSequence.AppendCallback( () => mission1.gameObject.SetActive(true));
             startSequence.Play();
+        }
+
+        public void SelectLevelOne()
+        {
+            titleScreen.gameObject.SetActive(false);
+            LoadLevel(1);
         }
 
         /// <summary>
@@ -89,7 +100,7 @@ namespace DeleteAfterReading
             missionTime = 0.0f;
 
             TextAsset levelJsonText = Resources.Load<TextAsset>("level" + levelNum);
-            //Debug.Log(levelJsonText.text);
+            Debug.Log(levelJsonText.text);
 
             currentLevel = JsonUtility.FromJson<LevelData>(levelJsonText.text);
             ComputerController.instance.desktopView.CreateOpenSlots(currentLevel.availableSpace);            
@@ -113,7 +124,7 @@ namespace DeleteAfterReading
             List<Disk> diskAdded = new List<Disk>();
             foreach (var pair in diskSpawnTimes)
             {
-                if (pair.Value >= missionTime)
+                if (missionTime >= (pair.Value))
                 {
                     SpawnDisk(pair.Key);
                     diskAdded.Add(pair.Key);
@@ -150,7 +161,7 @@ namespace DeleteAfterReading
         bool CheckMissionEnd()
         {
             bool missionEnd = false;
-            if(currentLevel.timeToSolve >= missionTime )
+            if(missionTime >= currentLevel.timeToSolve )
             {
                 missionEnd = true;
                 state = GameState.MISSION_SOLUTION;
