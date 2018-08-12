@@ -58,6 +58,8 @@ namespace DeleteAfterReading
                 int y = (int)(i / keywordColumns);
                 keywordButton.transform.localPosition = new Vector3(x * xSpacing, -y * ySpacing, 0);
                 keywordButton.clickHandler += onKeywordClick;
+
+                keywordButtons.Add(keywordButton);
             }
             ColorNextPrompt();
         }

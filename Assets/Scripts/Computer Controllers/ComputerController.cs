@@ -10,6 +10,8 @@ namespace DeleteAfterReading
         //public LevelSelect levelSelect; 
         public LevelController levelController;
 
+        public MainMenuView mainMenuView;
+
         public DesktopView desktopView;
 
         public EmailView emailView;
@@ -84,11 +86,20 @@ namespace DeleteAfterReading
             solverView.SetupSolver(levelController.currentLevel.puzzle, desktopView.GetKeywords());
         }
 
+        public void ShowTitleScreen()
+        {
+            SetActiveScreen(mainMenuView.gameObject);
+            levelController.ResetLevel();
+            mainMenuView.ShowTitleScreen();
+            curMode = Mode.LEVEL_SELECT;
+        }
+
         public void SetActiveScreen(GameObject activeView)
         {
             desktopView.gameObject.SetActive(false);
             emailView.gameObject.SetActive(false);
             solverView.gameObject.SetActive(false);
+            mainMenuView.gameObject.SetActive(false);
 
             activeView.SetActive(true);
         }

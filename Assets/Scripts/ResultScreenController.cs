@@ -53,6 +53,7 @@ namespace DeleteAfterReading
         public void HandleNext()
         {
             gameObject.SetActive(false);
+            ComputerController.instance.ShowTitleScreen();
             //TODO do we do anything else here?  or is the rest handled by the solver?
         }
     }

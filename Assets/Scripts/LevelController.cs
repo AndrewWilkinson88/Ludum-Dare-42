@@ -33,6 +33,8 @@ namespace DeleteAfterReading
 
         private float missionTime = 0.0f;
         private Dictionary<Disk, float> diskSpawnTimes = new Dictionary<Disk, float>();
+
+        private List<PhysicalDisk> diskList = new List<PhysicalDisk>();
         
         private void Awake()
         {
@@ -146,6 +148,7 @@ namespace DeleteAfterReading
             pd.transform.parent = diskSpawner.transform;
             pd.transform.localPosition = Vector3.zero;
             pd.SetDisk(d);
+            diskList.Add(pd);
         }
 
         /// <summary>
@@ -161,6 +164,16 @@ namespace DeleteAfterReading
             }
 
             return missionEnd;
+        }
+
+        public void ResetLevel()
+        {
+            for (int i = diskList.Count - 1; i >= 0; i--)
+            {
+                GameObject.Destroy(diskList[i].gameObject);
+            }
+            diskList = new List<PhysicalDisk>();
+            state = GameState.MISSION_SELECT;
         }
     }
 }

@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelController: {fileID: 1100687602}
+  mainMenuView: {fileID: 829559904}
   desktopView: {fileID: 1602729320}
   emailView: {fileID: 1741610617}
   solverView: {fileID: 1214129691}
