@@ -24,7 +24,7 @@ namespace DeleteAfterReading
 
         }
 
-        public Disk getDisk()
+        public Disk GetDisk()
         {
             return currentDisk;
         }
@@ -44,7 +44,7 @@ namespace DeleteAfterReading
 
         public bool IsAvailable()
         {
-            return currentDisk != null;
+            return currentDisk == null;
         }
     }
 }

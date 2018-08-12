@@ -53,5 +53,17 @@ namespace DeleteAfterReading
             desktopView.gameObject.SetActive(true);
             emailView.gameObject.SetActive(false);
         }
+
+        public void SaveDisk(Disk d)
+        {
+            desktopView.SaveDisk(d);
+            ShowDesktop();
+        }
+
+        public void DeleteDisk(Disk d)
+        {
+            desktopView.DeleteDisk(d);
+            ShowDesktop();
+        }
     }
 }

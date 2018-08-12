@@ -52,6 +52,21 @@ namespace DeleteAfterReading
                 if(diskSpaceSlots[i].IsAvailable())
                 {
                     diskSpaceSlots[i].SetDisk(d);
+                    openDiskSpace--;
+                    return;
+                }
+            }
+        }
+
+        public void DeleteDisk(Disk d)
+        {
+            for (int i = 0; i < diskSpaceSlots.Count; i++)
+            {
+                if(diskSpaceSlots[i].GetDisk() == d)
+                {
+                    diskSpaceSlots[i].DeleteDisk();
+                    openDiskSpace++;
+                    return;
                 }
             }
         }
@@ -69,7 +84,7 @@ namespace DeleteAfterReading
             for (int i = diskSpaceSlots.Count-1; i >= 0; i--)
             {
                 GameObject.Destroy(diskSpaceSlots[i].gameObject);                
-            }            
+            }
         }
     }
 }
