@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DeleteAfterReading.Model;
 
-namespace deleteAfterReading
+namespace DeleteAfterReading
 {
     public class DesktopView : MonoBehaviour {
 
@@ -17,6 +18,8 @@ namespace deleteAfterReading
 
         private List<DiskSpaceSlot> diskSpaceSlots;
 
+        private int openDiskSpace;
+
         // Use this for initialization
         void Start() {
 
@@ -29,6 +32,7 @@ namespace deleteAfterReading
 
         public void CreateOpenSlots(int numSlots)
         {
+            openDiskSpace = numSlots;
             if (diskSpaceSlots != null)
                 DestroyCurrentSlots();
             diskSpaceSlots = new List<DiskSpaceSlot>();
@@ -38,6 +42,17 @@ namespace deleteAfterReading
                 int x = i % maxColumns;
                 int y = (int)(i / maxColumns);
                 diskSpaceSlots.Add(CreateDiskSpaceSlot(x, y));
+            }
+        }
+
+        public void SaveDisk(Disk d)
+        {
+            for(int i = 0; i < diskSpaceSlots.Count; i++)
+            {
+                if(diskSpaceSlots[i].IsAvailable())
+                {
+                    diskSpaceSlots[i].SetDisk(d);
+                }
             }
         }
 

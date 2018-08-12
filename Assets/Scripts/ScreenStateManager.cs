@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Holoville.HOTween;
 using Holoville.HOTween.Plugins;
 
-namespace deleteAfterReading
+namespace DeleteAfterReading
 {
     public class ScreenStateManager : MonoBehaviour
     {

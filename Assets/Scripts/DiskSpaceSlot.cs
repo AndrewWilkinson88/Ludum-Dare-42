@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using deleteAfterReading.Model;
+using DeleteAfterReading.Model;
 using TMPro;
 
-namespace deleteAfterReading
+namespace DeleteAfterReading
 {
     public class DiskSpaceSlot : MonoBehaviour
     {
@@ -24,22 +24,27 @@ namespace deleteAfterReading
 
         }
 
-        Disk getDisk()
+        public Disk getDisk()
         {
             return currentDisk;
         }
 
-        void SetDisk(Disk d)
+        public void SetDisk(Disk d)
         {
             currentDisk = d;
             diskText.text  = d.title;
-
+            diskImage.SetActive(true);
         }
 
-        void DeleteDisk()
+        public void DeleteDisk()
         {
             currentDisk = null;
             diskImage.SetActive(false);
+        }
+
+        public bool IsAvailable()
+        {
+            return currentDisk != null;
         }
     }
 }

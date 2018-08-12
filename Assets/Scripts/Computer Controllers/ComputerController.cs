@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DeleteAfterReading.Model;
 
-namespace deleteAfterReading
+namespace DeleteAfterReading
 {
     public class ComputerController : MonoBehaviour
     {
@@ -10,13 +11,16 @@ namespace deleteAfterReading
         //public LevelSelect levelSelect; 
         public DesktopView desktopView;
 
+        public EmailView emailView;
+
         public static ComputerController instance;
 
         enum Mode
         {
             LEVEL_SELECT,
             DESKTOP,
-            EMAIL,
+            EXTERNAL_EMAIL,
+            DESKTOP_EMAIL
         }
 
         private Mode curMode = Mode.LEVEL_SELECT;
@@ -34,6 +38,11 @@ namespace deleteAfterReading
 
         }
 
-
+        public void LoadExternalEmail(Disk d)
+        {
+            curMode = Mode.EXTERNAL_EMAIL;
+            desktopView.gameObject.SetActive(false);
+            emailView.gameObject.SetActive(true);
+        }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using DeleteAfterReading.Model;
 
-using deleteAfterReading.Model;
-
-namespace deleteAfterReading
+namespace DeleteAfterReading
 {
     public class PhysicalDisk : MonoBehaviour
     {
@@ -12,6 +12,8 @@ namespace deleteAfterReading
         private Collider2D curCollision;
 
         public Disk diskData;
+
+        public TextMeshPro diskTitle;
 
         // Use this for initialization
         void Start()
@@ -28,6 +30,12 @@ namespace deleteAfterReading
             }
         }
 
+        public void SetDisk(Disk d)
+        {
+            diskData = d;
+            diskTitle.text = d.title;
+        }
+
         void OnMouseDown()
         {
             mouseIsDown = true;
@@ -39,7 +47,7 @@ namespace deleteAfterReading
             //TODO checking colliders name is a terrible way to do this.  Fix it at some point if you have time!
             if(curCollision != null && curCollision.name == "DriveTrigger")
             {
-
+                ComputerController.instance.LoadExternalEmail(diskData);
             }
         }
 

@@ -203,7 +203,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -281,6 +281,7 @@ MonoBehaviour:
     from: 
     text: 
     keywords: []
+  diskTitle: {fileID: 114280158535036158}
 --- !u!212 &212096860401205736
 SpriteRenderer:
   m_ObjectHideFlags: 1

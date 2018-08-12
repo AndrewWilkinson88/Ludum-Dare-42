@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using deleteAfterReading.Model;
+using DeleteAfterReading.Model;
 
-namespace deleteAfterReading
+namespace DeleteAfterReading
 {
     public class LevelController : MonoBehaviour
     {
-        DiskSpaceSlot diskSpacePrefab;
-        PhysicalDisk diskPrefab;
+        public GameObject diskSpawner;
+        public PhysicalDisk diskPrefab;
 
         // Use this for initialization
         void Start()
@@ -35,6 +35,10 @@ namespace deleteAfterReading
             foreach(Disk d in levelData.disks)
             {
                 Debug.Log(d.text);
+                PhysicalDisk pd = GameObject.Instantiate<PhysicalDisk>(diskPrefab);
+                pd.transform.parent = diskSpawner.transform;
+                pd.transform.localPosition = Vector3.zero;
+                pd.SetDisk(d);
             }
         }
     }
