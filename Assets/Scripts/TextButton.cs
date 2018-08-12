@@ -6,7 +6,7 @@ using TMPro;
 
 public class TextButton : MonoBehaviour, IPointerClickHandler {
 
-    public delegate void TextButtonClicked();
+    public delegate void TextButtonClicked(string s);
 
     public TextMeshPro text;
 
@@ -14,9 +14,8 @@ public class TextButton : MonoBehaviour, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Block " + gameObject.GetInstanceID() + " was clicked");
         if (clickHandler != null)
-            clickHandler();
+            clickHandler(text.text);
     }
 
     // Use this for initialization
