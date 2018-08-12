@@ -161,6 +161,7 @@ namespace DeleteAfterReading
             {
                 missionEnd = true;
                 state = GameState.MISSION_SOLUTION;
+                ComputerController.instance.OpenSolver();
             }
 
             return missionEnd;
