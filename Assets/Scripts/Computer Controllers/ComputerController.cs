@@ -8,20 +8,27 @@ namespace DeleteAfterReading
     public class ComputerController : MonoBehaviour
     {
         //public LevelSelect levelSelect; 
+        public LevelController levelController;
+
         public DesktopView desktopView;
 
         public EmailView emailView;
 
-        public static ComputerController instance;
+        public Solver solverView;
 
+        public static ComputerController instance;
         public PhysicalDisk diskInDrive;
+        public TextButton timerText;
+
+        private float remainingTime;
 
         enum Mode
         {
             LEVEL_SELECT,
             DESKTOP,
             EXTERNAL_EMAIL,
-            DESKTOP_EMAIL
+            DESKTOP_EMAIL,
+            SOLVER
         }
 
         private Mode curMode = Mode.LEVEL_SELECT;
@@ -30,48 +37,77 @@ namespace DeleteAfterReading
         void Start()
         {
             instance = this;
-
+            timerText.clickHandler += HandleTimerClick;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void LoadDesktopEmail(Disk disk)
         {
+            if (curMode == Mode.SOLVER)
+                return;
 
-        }
-
-        public void LoadDesktopEmail(Disk d)
-        {
             curMode = Mode.DESKTOP_EMAIL;
-            desktopView.gameObject.SetActive(false);
-            emailView.gameObject.SetActive(true);
-            emailView.LoadDesktopEmail(d);
+            SetActiveScreen(emailView.gameObject);
+            emailView.LoadDesktopEmail(disk);
         }
 
-        public void LoadExternalEmail(PhysicalDisk pd)
+        public void LoadExternalEmail(PhysicalDisk physicalDisk)
         {
-            diskInDrive = pd;
+            if (curMode == Mode.SOLVER)
+                return;
+
             curMode = Mode.EXTERNAL_EMAIL;
-            desktopView.gameObject.SetActive(false);
-            emailView.gameObject.SetActive(true);
-            emailView.LoadExternalEmail(pd.diskData);
+            diskInDrive = physicalDisk;
+            SetActiveScreen(emailView.gameObject);
+            emailView.LoadExternalEmail(physicalDisk.diskData);
         }
 
         public void ShowDesktop()
         {
-            desktopView.gameObject.SetActive(true);
+            if (curMode == Mode.SOLVER)
+                return;
+
+            curMode = Mode.DESKTOP;
+            SetActiveScreen(desktopView.gameObject);
+            timerText.gameObject.SetActive(true);
+        }
+
+        public void UpdateTimer(string time)
+        {
+            timerText.text.text = time;
+        }
+
+        public void OpenSolver()
+        {
+            curMode = Mode.SOLVER;
+            SetActiveScreen(solverView.gameObject);
+            timerText.gameObject.SetActive(false);
+            solverView.SetupSolver(levelController.currentLevel.puzzle, desktopView.GetKeywords());
+        }
+
+        public void SetActiveScreen(GameObject activeView)
+        {
+            desktopView.gameObject.SetActive(false);
             emailView.gameObject.SetActive(false);
+            solverView.gameObject.SetActive(false);
+
+            activeView.SetActive(true);
         }
 
-        public void SaveDisk(Disk d)
+        public void SaveDisk(Disk disk)
         {
-            desktopView.SaveDisk(d);
+            desktopView.SaveDisk(disk);
             ShowDesktop();
         }
 
-        public void DeleteDisk(Disk d)
+        public void DeleteDisk(Disk disk)
         {
-            desktopView.DeleteDisk(d);
+            desktopView.DeleteDisk(disk);
             ShowDesktop();
+        }
+
+        public void HandleTimerClick(string s)
+        {
+            OpenSolver();
         }
     }
 }

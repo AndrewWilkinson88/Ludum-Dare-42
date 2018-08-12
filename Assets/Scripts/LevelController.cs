@@ -24,18 +24,16 @@ namespace DeleteAfterReading
 
         public GameObject diskSpawner;
         public PhysicalDisk diskPrefab;
-
-
-
+        public ResultScreenController resultScreen;
+        public LevelData currentLevel;
         public SpriteRenderer fader;
-
+        public ComputerController computerController;
 
         public GameState state = GameState.TITLE_SCREEN;
 
         private float missionTime = 0.0f;
         private Dictionary<Disk, float> diskSpawnTimes = new Dictionary<Disk, float>();
-        private LevelData currentLevel;
-
+        
         private void Awake()
         {
             fader.gameObject.SetActive(true);
@@ -65,6 +63,11 @@ namespace DeleteAfterReading
                     missionTime += Time.deltaTime;
                     CheckSpawnDisk();
                     CheckMissionEnd();
+
+                    float remainingTime = currentLevel.timeToSolve - missionTime;
+                    int minutes = Mathf.FloorToInt(remainingTime / 60.0f);
+                    int seconds = Mathf.FloorToInt(remainingTime - minutes * 60);
+                    computerController.UpdateTimer(string.Format("{0:0}:{1:00}", minutes, seconds));
                     break;
                 case GameState.MISSION_PAUSED:
                     break;
@@ -75,7 +78,7 @@ namespace DeleteAfterReading
             }
         }
 
-        public void SelectLevelOne()
+        public void SelectLevelOne(string data)
         {
             mainMenuView.HideTitleScreen();
             LoadLevel(1);
@@ -99,6 +102,7 @@ namespace DeleteAfterReading
                 diskSpawnTimes.Add(d, d.start);
             }
 
+            computerController.ShowDesktop();
             state = GameState.MISSION_RUNNING;
         }
         

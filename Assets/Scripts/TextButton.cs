@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class TextButton : MonoBehaviour, IPointerClickHandler {
 
-    public delegate void TextButtonClicked();
+    public delegate void TextButtonClicked(string s);
+
+    public TextMeshPro text;
 
     public TextButtonClicked clickHandler;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Block " + gameObject.GetInstanceID() + " was clicked");
         if (clickHandler != null)
-            clickHandler();
+            clickHandler(text.text);
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    void Start ()
+    {
+	    if(text == null)
+        {
+            text = gameObject.GetComponent<TextMeshPro>();
+        }
 	}
 }

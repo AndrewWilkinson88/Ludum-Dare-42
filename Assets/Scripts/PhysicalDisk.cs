@@ -65,16 +65,22 @@ namespace DeleteAfterReading
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            if (ComputerController.instance.diskInDrive == null)
-                GetComponent<SpriteRenderer>().color = Color.green;
-            else
-                GetComponent<SpriteRenderer>().color = Color.red;
+            if (col.name == "DriveTrigger")
+            {
+                if (ComputerController.instance.diskInDrive == null)
+                    GetComponent<SpriteRenderer>().color = Color.green;
+                else
+                    GetComponent<SpriteRenderer>().color = Color.red;
+            }
             curCollision = col;
         }
 
         void OnTriggerExit2D(Collider2D col)
         {
-            GetComponent<SpriteRenderer>().color = Color.white;
+            if (col.name == "DriveTrigger")
+            {
+                GetComponent<SpriteRenderer>().color = Color.white;
+            }
 
             curCollision = null;
         }

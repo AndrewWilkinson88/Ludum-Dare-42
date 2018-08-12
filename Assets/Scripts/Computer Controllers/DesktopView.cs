@@ -86,5 +86,18 @@ namespace DeleteAfterReading
                 GameObject.Destroy(diskSpaceSlots[i].gameObject);                
             }
         }
+
+        public List<string> GetKeywords()
+        {
+            List<string> keywords = new List<string>();
+            for (int i = 0; i < diskSpaceSlots.Count; i++)
+            {
+                if (!diskSpaceSlots[i].IsAvailable())
+                {
+                    keywords.AddRange(diskSpaceSlots[i].GetDisk().keywords);
+                }
+            }
+            return keywords;
+        }
     }
 }

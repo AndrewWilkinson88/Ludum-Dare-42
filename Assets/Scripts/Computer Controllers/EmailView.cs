@@ -60,28 +60,28 @@ namespace DeleteAfterReading
             currentDisk = d;
         }
 
-        public void onSave()
+        public void onSave(string s)
         {
             Debug.Log("save");
 
             ComputerController.instance.SaveDisk(currentDisk);
         }
 
-        public void onEject()
+        public void onEject(string s)
         {
             Debug.Log("eject");
 
             ComputerController.instance.ShowDesktop();
         }
 
-        public void onClose()
+        public void onClose(string s)
         {
             Debug.Log("close");
 
             ComputerController.instance.ShowDesktop();
         }
 
-        public void onDelete()
+        public void onDelete(string s)
         {
             Debug.Log("delete");
 
