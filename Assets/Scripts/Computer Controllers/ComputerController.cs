@@ -39,19 +39,39 @@ namespace DeleteAfterReading
 
         }
 
+        public void LoadDesktopEmail(Disk d)
+        {
+            curMode = Mode.DESKTOP_EMAIL;
+            desktopView.gameObject.SetActive(false);
+            emailView.gameObject.SetActive(true);
+            emailView.LoadDesktopEmail(d);
+        }
+
         public void LoadExternalEmail(PhysicalDisk pd)
         {
             diskInDrive = pd;
             curMode = Mode.EXTERNAL_EMAIL;
             desktopView.gameObject.SetActive(false);
             emailView.gameObject.SetActive(true);
-            emailView.LoadExternalDisk(pd.diskData);
+            emailView.LoadExternalEmail(pd.diskData);
         }
 
         public void ShowDesktop()
         {
             desktopView.gameObject.SetActive(true);
             emailView.gameObject.SetActive(false);
+        }
+
+        public void SaveDisk(Disk d)
+        {
+            desktopView.SaveDisk(d);
+            ShowDesktop();
+        }
+
+        public void DeleteDisk(Disk d)
+        {
+            desktopView.DeleteDisk(d);
+            ShowDesktop();
         }
     }
 }

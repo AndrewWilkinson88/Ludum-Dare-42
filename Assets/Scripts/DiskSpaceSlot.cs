@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DeleteAfterReading.Model;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace DeleteAfterReading
 {
-    public class DiskSpaceSlot : MonoBehaviour
+    public class DiskSpaceSlot : MonoBehaviour, IPointerClickHandler    
     {
         public GameObject diskImage;
         public TextMeshPro diskText;
@@ -24,7 +25,15 @@ namespace DeleteAfterReading
 
         }
 
-        public Disk getDisk()
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (currentDisk != null)
+            {
+                ComputerController.instance.LoadDesktopEmail(currentDisk);
+            }
+        }
+
+        public Disk GetDisk()
         {
             return currentDisk;
         }
@@ -44,7 +53,7 @@ namespace DeleteAfterReading
 
         public bool IsAvailable()
         {
-            return currentDisk != null;
+            return currentDisk == null;
         }
     }
 }

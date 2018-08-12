@@ -56,6 +56,8 @@ namespace DeleteAfterReading
             {
                 this.GetComponent<Rigidbody2D>().isKinematic = true;
                 this.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                this.GetComponent<Rigidbody2D>().rotation = 0;
+                this.GetComponent<Rigidbody2D>().angularVelocity = 0;
                 this.transform.position = curCollision.gameObject.transform.position;
                 ComputerController.instance.LoadExternalEmail(this);
             }
