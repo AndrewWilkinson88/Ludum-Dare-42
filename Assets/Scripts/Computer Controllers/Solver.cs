@@ -73,15 +73,12 @@ namespace DeleteAfterReading
             {
                 //We're done, check if its the right answer.
                 bool correct = CheckAnswer();
+                ComputerController.instance.levelController.ShowResult(correct, correct ? puzzle.headlineSuccess : messageToSolve.text);
+
                 //Debug.Log("YOUR ANSWER IS : " + correct);
                 if (correct)
                 {
                     ComputerController.instance.levelController.CheckLevelUnlock();
-                    ComputerController.instance.levelController.resultScreen.ShowNewspaperSuccess(puzzle.headlineSuccess);
-                }
-                else
-                {
-                    ComputerController.instance.levelController.resultScreen.ShowNewspaperFailure(messageToSolve.text);
                 }
             }
             else
