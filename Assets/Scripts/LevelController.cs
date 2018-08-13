@@ -86,12 +86,14 @@ namespace DeleteAfterReading
 
         public void SelectLevelOne(string data)
         {
+            computerController.buttonPress.Play();
             mainMenuView.HideTitleScreen();
             LoadLevel(1);
         }
 
         public void SelectLevelTwo(string data)
         {
+            computerController.buttonPress.Play();            
             mainMenuView.HideTitleScreen();
             LoadLevel(2);
         }
@@ -101,7 +103,7 @@ namespace DeleteAfterReading
         /// </summary>
         void LoadLevel(int levelNum)
         {
-            
+            MusicController.instance.PlayMainTheme();
             levelBeingPlayed = levelNum;
             missionTime = 0.0f;
 

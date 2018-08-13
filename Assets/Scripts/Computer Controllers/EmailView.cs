@@ -100,15 +100,16 @@ namespace DeleteAfterReading
         {
             if (!ComputerController.instance.IsDiskFull())
             {
+                ComputerController.instance.buttonPress.Play();
                 ComputerController.instance.SaveDisk(currentDisk);
+                ComputerController.instance.diskInDrive.EjectDisk();
             }
-            ComputerController.instance.diskInDrive.EjectDisk();
         }
 
         public void onEject(string s)
         {
             Debug.Log("eject");
-
+            ComputerController.instance.buttonPress.Play();
             ComputerController.instance.ShowDesktop();
             ComputerController.instance.diskInDrive.EjectDisk();
         }
@@ -116,14 +117,14 @@ namespace DeleteAfterReading
         public void onClose(string s)
         {
             Debug.Log("close");
-
+            ComputerController.instance.buttonPress.Play();
             ComputerController.instance.ShowDesktop();
         }
 
         public void onDelete(string s)
         {
             Debug.Log("delete");
-
+            ComputerController.instance.buttonPress.Play();
             ComputerController.instance.DeleteDisk(currentDisk);
         }
     }

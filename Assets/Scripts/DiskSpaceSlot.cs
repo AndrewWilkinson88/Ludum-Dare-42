@@ -29,6 +29,7 @@ namespace DeleteAfterReading
         {
             if (currentDisk != null)
             {
+                ComputerController.instance.buttonPress.Play();
                 ComputerController.instance.LoadDesktopEmail(currentDisk);
             }
         }

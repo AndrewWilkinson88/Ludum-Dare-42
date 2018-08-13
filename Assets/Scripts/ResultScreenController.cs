@@ -32,6 +32,7 @@ namespace DeleteAfterReading
 
         public void ShowNewspaperSuccess(string headline)
         {
+            MusicController.instance.PlayWin();
             gameObject.SetActive(true);
             successImage.gameObject.SetActive(true);
             failImage.gameObject.SetActive(false);
@@ -42,6 +43,7 @@ namespace DeleteAfterReading
 
         public void ShowNewspaperFailure(string failedBlob)
         {
+            MusicController.instance.PlayLose();
             gameObject.SetActive(true);
             successImage.gameObject.SetActive(false);
             failImage.gameObject.SetActive(true);
@@ -54,6 +56,7 @@ namespace DeleteAfterReading
         {
             gameObject.SetActive(false);
             ComputerController.instance.ShowTitleScreen();
+            MusicController.instance.Stop();
             //TODO do we do anything else here?  or is the rest handled by the solver?
         }
     }

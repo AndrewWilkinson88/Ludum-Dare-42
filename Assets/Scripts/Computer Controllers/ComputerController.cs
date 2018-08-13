@@ -28,6 +28,7 @@ namespace DeleteAfterReading
         public AudioSource disketteInsert;
         public AudioSource disketteEject;
         public AudioSource stickyNoteSound;
+        public AudioSource buttonPress;
 
         private float remainingTime;
 
@@ -148,6 +149,7 @@ namespace DeleteAfterReading
 
         public void HandleTimerClick(string s)
         {
+            ComputerController.instance.buttonPress.Play();
             OpenSolver();
         }
 

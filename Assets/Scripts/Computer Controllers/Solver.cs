@@ -66,6 +66,7 @@ namespace DeleteAfterReading
 
         public void onKeywordClick(string s)
         {
+            ComputerController.instance.buttonPress.Play();
             Debug.Log(s);
             currentAnswer.Add(s);
             messageToSolve.text = messageToSolve.text.Replace("<color=#77ff77>[" + currentAnswer.Count + "]</color>", s);
