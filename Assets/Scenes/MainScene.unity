@@ -1523,6 +1523,36 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 727207446}
+    - target: {fileID: 114313309541059286, guid: bf547a3cb84c1c24b8db744841e3ab2b,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114313309541059286, guid: bf547a3cb84c1c24b8db744841e3ab2b,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114725030515131254, guid: bf547a3cb84c1c24b8db744841e3ab2b,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114725030515131254, guid: bf547a3cb84c1c24b8db744841e3ab2b,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114507735390729828, guid: bf547a3cb84c1c24b8db744841e3ab2b,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114507735390729828, guid: bf547a3cb84c1c24b8db744841e3ab2b,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf547a3cb84c1c24b8db744841e3ab2b, type: 2}
   m_IsPrefabAsset: 0
