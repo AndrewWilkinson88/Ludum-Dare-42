@@ -282,6 +282,7 @@ MonoBehaviour:
     from: 
     text: 
     keywords: []
+  diskImage: {fileID: 212096860401205736}
   diskTitle: {fileID: 114280158535036158}
 --- !u!212 &212096860401205736
 SpriteRenderer:

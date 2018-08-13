@@ -11,6 +11,7 @@ namespace DeleteAfterReading
     public class EmailView : MonoBehaviour {
 
         private Disk currentDisk;
+        private PhysicalDisk currentPhysicalDisk;
 
         public TextMeshPro to;
         public TextMeshPro from;
@@ -52,12 +53,15 @@ namespace DeleteAfterReading
                     eject.gameObject.SetActive(true);
                 }
             );
+            FillText.SetId("FillText");
 
             currentDisk = d;
         }
 
         void initText()
         {
+            DOTween.Kill("FillText");
+
             to.text = "";
             from.text = "";
             body.text = "";
@@ -87,6 +91,7 @@ namespace DeleteAfterReading
             Debug.Log("save");
 
             ComputerController.instance.SaveDisk(currentDisk);
+            ComputerController.instance.diskInDrive.EjectDisk();
         }
 
         public void onEject(string s)
@@ -94,6 +99,7 @@ namespace DeleteAfterReading
             Debug.Log("eject");
 
             ComputerController.instance.ShowDesktop();
+            ComputerController.instance.diskInDrive.EjectDisk();
         }
 
         public void onClose(string s)
