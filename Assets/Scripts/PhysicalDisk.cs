@@ -40,8 +40,8 @@ namespace DeleteAfterReading
             if(this == ComputerController.instance.diskInDrive)
             {
                 ComputerController.instance.diskInDrive = null;
-                diskImage.sortingOrder = 11;
-                diskTitle.sortingOrder = 12;
+                diskImage.sortingOrder = 13;
+                diskTitle.sortingOrder = 14;
                 inDrive = false;
 
                 ComputerController.instance.ShowDesktop();
@@ -117,8 +117,8 @@ namespace DeleteAfterReading
                     //Turn Physics on
                     this.GetComponent<Rigidbody2D>().isKinematic = true;
                     this.GetComponent<Rigidbody2D>().velocity = Vector3.down * 10.0f;
-                    diskImage.sortingOrder = 11;
-                    diskTitle.sortingOrder = 12;
+                    diskImage.sortingOrder = 13;
+                    diskTitle.sortingOrder = 14;
                     inDrive = false;
                 }
             );
