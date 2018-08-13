@@ -24,7 +24,7 @@ namespace DeleteAfterReading
             save.clickHandler += onSave;
             eject.clickHandler += onEject;
             close.clickHandler += onClose;
-            delete.clickHandler += onDelete;
+            delete.clickHandler += onDelete;            
         }
 
         // Update is called once per frame
@@ -44,6 +44,16 @@ namespace DeleteAfterReading
             delete.gameObject.SetActive(false);
 
             currentDisk = d;
+
+
+            if (ComputerController.instance.IsDiskFull())
+            {
+                save.text.color = Color.gray;
+            }
+            else
+            {
+                save.text.color = eject.text.color;
+            }
         }
 
         public void LoadDesktopEmail(Disk d)
@@ -62,9 +72,10 @@ namespace DeleteAfterReading
 
         public void onSave(string s)
         {
-            Debug.Log("save");
-
-            ComputerController.instance.SaveDisk(currentDisk);
+            if (!ComputerController.instance.IsDiskFull())
+            {
+                ComputerController.instance.SaveDisk(currentDisk);
+            }
         }
 
         public void onEject(string s)

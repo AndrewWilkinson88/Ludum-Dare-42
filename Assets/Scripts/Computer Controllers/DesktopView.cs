@@ -71,6 +71,11 @@ namespace DeleteAfterReading
             }
         }
 
+        public bool IsDiskFull()
+        {
+            return openDiskSpace <= 0;
+        }
+
         DiskSpaceSlot CreateDiskSpaceSlot(int x, int y)
         {
             DiskSpaceSlot newSlot = GameObject.Instantiate<DiskSpaceSlot>(diskSpacePrefab);
