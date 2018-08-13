@@ -1523,36 +1523,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 727207446}
-    - target: {fileID: 114313309541059286, guid: bf547a3cb84c1c24b8db744841e3ab2b,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114313309541059286, guid: bf547a3cb84c1c24b8db744841e3ab2b,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114725030515131254, guid: bf547a3cb84c1c24b8db744841e3ab2b,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114725030515131254, guid: bf547a3cb84c1c24b8db744841e3ab2b,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114507735390729828, guid: bf547a3cb84c1c24b8db744841e3ab2b,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114507735390729828, guid: bf547a3cb84c1c24b8db744841e3ab2b,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf547a3cb84c1c24b8db744841e3ab2b, type: 2}
   m_IsPrefabAsset: 0
@@ -1572,7 +1542,7 @@ GameObject:
   - component: {fileID: 1234693356}
   - component: {fileID: 1234693355}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1589,7 +1559,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c4895548ff73edc4eb41ddd931b3f7c3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
