@@ -259,6 +259,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diskSpacePrefab: {fileID: 114997441056435308, guid: 94998f2dd9d404b4488a60183502731f,
     type: 2}
+  stickyNote: {fileID: 0}
+  stickyArm: {fileID: 0}
+  stickyText: {fileID: 0}
 --- !u!212 &212250138966089538
 SpriteRenderer:
   m_ObjectHideFlags: 1

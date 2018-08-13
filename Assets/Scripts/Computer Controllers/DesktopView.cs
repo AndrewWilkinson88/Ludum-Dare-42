@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using DeleteAfterReading.Model;
+using DG.Tweening;
+using TMPro;
 
 namespace DeleteAfterReading
 {
@@ -15,20 +17,9 @@ namespace DeleteAfterReading
         private float ySpacing = 3.5f;
 
         public DiskSpaceSlot diskSpacePrefab;
-
         private List<DiskSpaceSlot> diskSpaceSlots;
 
         private int openDiskSpace;
-
-        // Use this for initialization
-        void Start() {
-
-        }
-
-        // Update is called once per frame
-        void Update() {
-
-        }
 
         public void CreateOpenSlots(int numSlots)
         {

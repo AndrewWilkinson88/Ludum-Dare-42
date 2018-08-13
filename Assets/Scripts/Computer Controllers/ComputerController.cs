@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DeleteAfterReading.Model;
+using DG.Tweening;
+using TMPro;
 
 namespace DeleteAfterReading
 {
@@ -11,12 +13,13 @@ namespace DeleteAfterReading
         public LevelController levelController;
 
         public MainMenuView mainMenuView;
-
         public DesktopView desktopView;
-
         public EmailView emailView;
-
         public Solver solverView;
+
+        public SpriteRenderer stickyNote;
+        public SpriteRenderer stickyArm;
+        public TextMeshPro stickyText;
 
         public static ComputerController instance;
         public PhysicalDisk diskInDrive;
@@ -71,6 +74,24 @@ namespace DeleteAfterReading
             curMode = Mode.DESKTOP;
             SetActiveScreen(desktopView.gameObject);
             timerText.gameObject.SetActive(true);
+        }
+
+        public void ShowStickyNote(string promptText)
+        {
+            stickyText.text = promptText;
+
+            Sequence stickySequence = DOTween.Sequence();
+            stickySequence.Append(stickyNote.transform.DOLocalMoveY(2.5f, 0.5f).SetEase(Ease.InExpo));
+            stickySequence.Join(stickyArm.transform.DOLocalMoveY(-4f, 0.5f).SetEase(Ease.InExpo));
+            stickySequence.Append(stickyArm.transform.DOLocalMoveY(-13f, 0.5f).SetEase(Ease.InExpo));
+            stickySequence.SetId("StickySequence");
+        }
+
+        public void ResetStickyNote()
+        {
+            DOTween.Kill("StickySequence");
+            stickyNote.transform.position = new Vector3(0.82f, -7.5f, 0.0f);
+            stickyArm.transform.position = new Vector3(1.71f, -14.22f, 0.0f);
         }
 
         public void UpdateTimer(string time)

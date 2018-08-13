@@ -51,7 +51,7 @@ namespace DeleteAfterReading
             mainMenuView.mission1.clickHandler += SelectLevelOne;
             mainMenuView.mission2.clickHandler += SelectLevelTwo;
 
-            fader.DOFade(0.0f, 2.0f).OnComplete( ()=>mainMenuView.StartTitleScreenSequence());
+            fader.DOFade(0.0f, 2.0f).OnComplete( ()=>mainMenuView.StartTitleScreenSequence() );
         }
 
         // Update is called once per frame
@@ -101,6 +101,7 @@ namespace DeleteAfterReading
         /// </summary>
         void LoadLevel(int levelNum)
         {
+            
             levelBeingPlayed = levelNum;
             missionTime = 0.0f;
 
@@ -108,6 +109,8 @@ namespace DeleteAfterReading
             Debug.Log(levelJsonText.text);
 
             currentLevel = JsonUtility.FromJson<LevelData>(levelJsonText.text);
+            
+            ComputerController.instance.ShowStickyNote(currentLevel.puzzle.prompt);
             ComputerController.instance.desktopView.CreateOpenSlots(currentLevel.availableSpace);            
 
             foreach(Disk d in currentLevel.disks)
@@ -186,12 +189,13 @@ namespace DeleteAfterReading
 
         public void ShowResult(bool didSucceed, string message)
         {
+            
             Sequence resultSequence = DOTween.Sequence();
 
             resultSequence.Append(fader.DOFade(1.0f, 0.5f));
             resultSequence.AppendCallback(() =>
                {
-                   if(didSucceed)
+                   if (didSucceed)
                    {
                        resultScreen.ShowNewspaperSuccess(message);
                    }
@@ -206,6 +210,7 @@ namespace DeleteAfterReading
 
         public void ResetLevel()
         {
+            ComputerController.instance.ResetStickyNote();
             for (int i = diskList.Count - 1; i >= 0; i--)
             {
                 GameObject.Destroy(diskList[i].gameObject);
