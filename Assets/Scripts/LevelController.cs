@@ -167,6 +167,26 @@ namespace DeleteAfterReading
             return missionEnd;
         }
 
+        public void ShowResult(bool didSucceed, string message)
+        {
+            Sequence resultSequence = DOTween.Sequence();
+
+            resultSequence.Append(fader.DOFade(1.0f, 0.5f));
+            resultSequence.AppendCallback(() =>
+               {
+                   if(didSucceed)
+                   {
+                       resultScreen.ShowNewspaperSuccess(message);
+                   }
+                   else
+                   {
+                       resultScreen.ShowNewspaperFailure(message);
+                   }
+               }
+            );
+            resultSequence.Append(fader.DOFade(0.0f, 0.5f));
+        }
+
         public void ResetLevel()
         {
             for (int i = diskList.Count - 1; i >= 0; i--)
