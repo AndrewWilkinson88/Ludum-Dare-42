@@ -25,6 +25,10 @@ namespace DeleteAfterReading
         public PhysicalDisk diskInDrive;
         public TextButton timerText;
 
+        public AudioSource disketteInsert;
+        public AudioSource disketteEject;
+        public AudioSource stickyNoteSound;
+
         private float remainingTime;
 
         enum Mode
@@ -60,6 +64,8 @@ namespace DeleteAfterReading
             if (curMode == Mode.SOLVER)
                 return;
 
+            disketteInsert.Play();
+
             curMode = Mode.EXTERNAL_EMAIL;
             diskInDrive = physicalDisk;
             SetActiveScreen(emailView.gameObject);
@@ -83,8 +89,9 @@ namespace DeleteAfterReading
             Sequence stickySequence = DOTween.Sequence();
             stickySequence.Append(stickyNote.transform.DOLocalMoveY(2.5f, 0.5f).SetEase(Ease.InExpo));
             stickySequence.Join(stickyArm.transform.DOLocalMoveY(-4f, 0.5f).SetEase(Ease.InExpo));
+            stickySequence.AppendCallback(() => stickyNoteSound.Play());
             stickySequence.Append(stickyArm.transform.DOLocalMoveY(-13f, 0.5f).SetEase(Ease.InExpo));
-            stickySequence.SetId("StickySequence");
+            stickySequence.SetId("StickySequence");            
         }
 
         public void ResetStickyNote()

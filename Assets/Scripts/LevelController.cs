@@ -169,6 +169,7 @@ namespace DeleteAfterReading
             pd.transform.localPosition = Vector3.zero;
             pd.SetDisk(d);
             diskList.Add(pd);
+            diskSpawner.GetComponent<AudioSource>().Play();
         }
 
         /// <summary>
@@ -210,6 +211,7 @@ namespace DeleteAfterReading
 
         public void ResetLevel()
         {
+            diskSpawnTimes.Clear();
             ComputerController.instance.ResetStickyNote();
             for (int i = diskList.Count - 1; i >= 0; i--)
             {

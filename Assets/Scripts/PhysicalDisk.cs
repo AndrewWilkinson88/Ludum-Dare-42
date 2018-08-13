@@ -107,6 +107,7 @@ namespace DeleteAfterReading
 
         public void EjectDisk()
         {
+            ComputerController.instance.disketteEject.Play();
             DOTween.Kill("InsertSequence");
             ComputerController.instance.diskInDrive = null;
 
