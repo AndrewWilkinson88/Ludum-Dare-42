@@ -140,7 +140,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4286019583
   m_fontColor: {r: 1, g: 0.46666667, b: 0.46666667, a: 1}
   m_enableVertexGradient: 0
   m_fontColorGradient:
@@ -207,7 +207,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -247,6 +247,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.53, y: 1.47}
-  m_SizeDelta: {x: 3.568, y: 0.563}
+  m_AnchoredPosition: {x: -10.976, y: 1.479}
+  m_SizeDelta: {x: 5.2, y: 0.544}
   m_Pivot: {x: 0.5, y: 0.5}

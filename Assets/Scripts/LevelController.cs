@@ -31,6 +31,9 @@ namespace DeleteAfterReading
 
         public GameState state = GameState.TITLE_SCREEN;
 
+        public int currentLevelUnlocked = 1;
+        public int levelBeingPlayed = 0;
+
         private float missionTime = 0.0f;
         private Dictionary<Disk, float> diskSpawnTimes = new Dictionary<Disk, float>();
 
@@ -46,6 +49,7 @@ namespace DeleteAfterReading
         {
             state = GameState.TITLE_SCREEN;
             mainMenuView.mission1.clickHandler += SelectLevelOne;
+            mainMenuView.mission2.clickHandler += SelectLevelTwo;
 
             fader.DOFade(0.0f, 2.0f).OnComplete( ()=>mainMenuView.StartTitleScreenSequence());
         }
@@ -86,11 +90,18 @@ namespace DeleteAfterReading
             LoadLevel(1);
         }
 
+        public void SelectLevelTwo(string data)
+        {
+            mainMenuView.HideTitleScreen();
+            LoadLevel(2);
+        }
+
         /// <summary>
         /// Loads a Level based on it's Json
         /// </summary>
         void LoadLevel(int levelNum)
         {
+            levelBeingPlayed = levelNum;
             missionTime = 0.0f;
 
             TextAsset levelJsonText = Resources.Load<TextAsset>("level" + levelNum);
@@ -106,6 +117,12 @@ namespace DeleteAfterReading
 
             computerController.ShowDesktop();
             state = GameState.MISSION_RUNNING;
+        }
+
+        public void CheckLevelUnlock()
+        {
+            if (levelBeingPlayed + 1 > currentLevelUnlocked)
+                currentLevelUnlocked = levelBeingPlayed + 1;
         }
         
         /// <summary>

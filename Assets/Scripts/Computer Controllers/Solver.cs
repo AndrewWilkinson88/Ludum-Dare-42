@@ -17,9 +17,9 @@ namespace DeleteAfterReading
         private List<string> currentAnswer;
 
         private List<TextButton> keywordButtons;
-        private int keywordColumns = 3;
-        private float xSpacing = 3.5f;
-        private float ySpacing = .75f;
+        private int keywordColumns = 2;
+        private float xSpacing = 5f;
+        private float ySpacing = .65f;
 
         private Puzzle puzzle;
 
@@ -76,6 +76,7 @@ namespace DeleteAfterReading
                 //Debug.Log("YOUR ANSWER IS : " + correct);
                 if (correct)
                 {
+                    ComputerController.instance.levelController.CheckLevelUnlock();
                     ComputerController.instance.levelController.resultScreen.ShowNewspaperSuccess(puzzle.headlineSuccess);
                 }
                 else
