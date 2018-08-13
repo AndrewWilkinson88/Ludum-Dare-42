@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DeleteAfterReading.Model;
+using DG.Tweening;
+using DG.DemiLib.External;
 
 namespace DeleteAfterReading
 {
@@ -34,16 +36,36 @@ namespace DeleteAfterReading
 
         public void LoadExternalEmail(Disk d)
         {
-            to.text = "To: " + d.to;
-            from.text = "From: " + d.from;
-            body.text = d.text;
+            initText();
+            Sequence FillText = DOTween.Sequence();
 
-            save.gameObject.SetActive(true);
-            eject.gameObject.SetActive(true);
-            close.gameObject.SetActive(false);
-            delete.gameObject.SetActive(false);
+            FillText.AppendInterval(0.5f);
+            FillText.Append(to.DOText("To: " + d.to, d.to.Length / 25.0f, true).SetEase(Ease.Linear));
+            FillText.AppendInterval(0.5f);
+            FillText.Append(from.DOText("From: " + d.from, d.from.Length / 25.0f, true).SetEase(Ease.Linear));
+            FillText.AppendInterval(0.5f);
+            FillText.Append(body.DOText(d.text, d.text.Length / 60.0f, true).SetEase(Ease.Linear));
+
+            FillText.AppendCallback(() =>
+                {
+                    save.gameObject.SetActive(true);
+                    eject.gameObject.SetActive(true);
+                }
+            );
 
             currentDisk = d;
+        }
+
+        void initText()
+        {
+            to.text = "";
+            from.text = "";
+            body.text = "";
+
+            save.gameObject.SetActive(false);
+            eject.gameObject.SetActive(false);
+            close.gameObject.SetActive(false);
+            delete.gameObject.SetActive(false);
         }
 
         public void LoadDesktopEmail(Disk d)
