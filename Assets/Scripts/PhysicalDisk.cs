@@ -47,6 +47,7 @@ namespace DeleteAfterReading
                 ComputerController.instance.ShowDesktop();
             }
             this.GetComponent<Rigidbody2D>().isKinematic = false;
+            this.GetComponent<BoxCollider2D>().isTrigger = false;
         }
 
         void OnMouseUp()
@@ -91,6 +92,7 @@ namespace DeleteAfterReading
             this.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             this.GetComponent<Rigidbody2D>().rotation = 0;
             this.GetComponent<Rigidbody2D>().angularVelocity = 0;
+            this.GetComponent<BoxCollider2D>().isTrigger = true;
             GetComponent<SpriteRenderer>().color = Color.white;
 
             //Transform to position to be inserted

@@ -122,14 +122,13 @@ namespace DeleteAfterReading
             }
             else
             {
-                ComputerController.instance.levelController.ShowResult(false, "CIA somehow manages to find no clues!");
+                levelController.ShowResult(false, "CIA somehow manages to find no clues!");
             }
         }
 
         public void ShowTitleScreen()
         {
             SetActiveScreen(mainMenuView.gameObject);
-            levelController.ResetLevel();
             mainMenuView.ShowTitleScreen();
             curMode = Mode.LEVEL_SELECT;
         }
