@@ -9,6 +9,9 @@ public class MainMenuView : MonoBehaviour
     public SpriteRenderer titleScreen;
     public SpriteRenderer stickyNote;
     public SpriteRenderer stickyArm;
+    public SpriteRenderer powerButtonOn;
+    public SpriteRenderer powerButtonOff;
+
     public Color OnColor;
 
     public TextButton mission1;
@@ -17,7 +20,8 @@ public class MainMenuView : MonoBehaviour
     public void StartTitleScreenSequence()
     {
         Sequence startSequence = DOTween.Sequence();
- 
+
+        powerButtonOff.gameObject.SetActive(false);
         startSequence.Append(computerBackground.DOColor(OnColor, 1.0f).SetEase(Ease.OutFlash, 15, 1));
         startSequence.Append(titleScreen.transform.DOLocalMoveY(3.0f, 1.0f));
         startSequence.Append(stickyNote.transform.DOLocalMoveY(2.5f, 0.5f).SetEase(Ease.InExpo));
