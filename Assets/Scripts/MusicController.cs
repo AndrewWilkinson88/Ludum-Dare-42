@@ -10,6 +10,7 @@ namespace DeleteAfterReading {
         public AudioSource mainSong;
         public AudioSource winSong;
         public AudioSource loseSong;
+        public AudioSource solveSong;
 
         private AudioSource curSound;
 
@@ -34,6 +35,10 @@ namespace DeleteAfterReading {
         public void PlayLose()
         {
             Play(loseSong);
+        }
+        public void PlaySolve()
+        {
+            Play(solveSong);
         }
 
         public void Play(AudioSource song)

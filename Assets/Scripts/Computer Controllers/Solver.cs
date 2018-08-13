@@ -62,6 +62,7 @@ namespace DeleteAfterReading
                 keywordButtons.Add(keywordButton);
             }
             ColorNextPrompt();
+            MusicController.instance.PlaySolve();
         }
 
         public void onKeywordClick(string s)
