@@ -80,6 +80,8 @@ namespace DeleteAfterReading
 
         public void OpenSolver()
         {
+            if (curMode == Mode.SOLVER)
+                return;
             curMode = Mode.SOLVER;
             SetActiveScreen(solverView.gameObject);
             timerText.gameObject.SetActive(false);
@@ -119,6 +121,11 @@ namespace DeleteAfterReading
         public void HandleTimerClick(string s)
         {
             OpenSolver();
+        }
+
+        public bool IsDiskFull()
+        {
+            return desktopView.IsDiskFull();
         }
     }
 }

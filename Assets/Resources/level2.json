@@ -1,37 +1,69 @@
 {
   "availableTools": [ ],
-  "availableSpace": 2,
-  "timeToSolve": 60,
+  "availableSpace": 3,
+  "timeToSolve": 120,
   "puzzle": {
-    "prompt": "Someone has stolen military equipment!  Figure out who they are, what they stole, and where they hid it.",
-    "solutionPrompt": "[1] hid the [2] in the [3]",
-    "keywords": [ "Cuba", "nukes", "volcano" ],
-    "headlineSuccess": "Clever agent stops disaster!  Cubian Nukes discovered in volcano!"
+    "prompt": "A foreign nation is hiring scientists to alter animals into high tech killing machines.  Its your job to find the nation, the name of the lead scientist, the type of animal, how they're altering them, and where their headquarters is located.",
+    "solutionPrompt": "[1] hired [2] to attach [3] to [4] at their secret lab in [5]",
+    "keywords": [ "Russia", "Kohler", "chainsaws", "bears", "Argentina" ],
+    "headlineSuccess": "Russian plot foiled! Chainsaws removed from bears in Argentina."
   },
-  "disks": [
+  "disks": [    
     {
       "start": 3,
-      "title": "173",
-      "to": "alpha dog",
-      "from": "curious cactus",
-      "text": "Our small <color=#ff7777>island</color> nation is looking to accquire <color=#ff7777>nukes</color> from the <color=#ff7777>US</color>.  Do you know who would have info on this?  There will be plenty of money in it for you.",
-      "keywords": [ "island", "nukes", "US" ]
+      "title": "111",
+      "to": "Skinny Cow",
+      "from": "The Tall Man",
+      "text": "We're doing our best to find <color=#ff7777>subjects</color> but the truth is there aren't many <color=#ff7777>bears</color> here.  Maybe you could <color=#ff7777>ship</color> some to us from <color=#ff7777>Russia</color>?",
+      "keywords": [ "subjects","bears", "Russia", "ship" ]
     },
     {
       "start": 7,
-      "title": "142",
-      "to": "curious cactus",
-      "from": "heart attacker",
-      "text": "Friend <color=#ff7777>Cuba</color>.  We have determined your payment is sufficient.  You can use our <color=#ff7777>volcano</color> to store the items.  We will not inform <color=#ff7777>Russia</color>.",
-      "keywords": [ "volcano", "Russia", "Cuba" ]
+      "title": "13",
+      "to": "Miss Maggie",
+      "from": "Jaggedy John",
+      "text": "I can't wait to see you this weekend for the <color=#ff7777>dance</color> your <color=#ff7777>eyes</color> are more beautiful than warm <color=#ff7777>spaghetti</color>.",
+      "keywords": [ "dance", "eyes", "spaghetti" ]
     },
     {
       "start": 15,
-      "title": "48",
-      "to": "curious cactus",
-      "from" : "alpha dog",
-      "text": "Meet us at the <color=#ff7777>Port</color> at <color=#ff7777>10 PM</color>.  We have a great <color=#ff7777>deal</color> to discuss.",
-      "keywords": [ "10 PM", "Port", "deal" ]
+      "title": "567",
+      "to": "Skinny Cow",
+      "from": "Double O Darren",
+      "text": "I know you can't respond from this email, but the <color=#ff7777>whales</color> you ordered are comming along swimmingly.  Their inherent ability to <color=#ff7777>Crush</color>.  Still though, it might make the most sense to fill them with <color=#ff7777>plutonium</color>.  I'm not sure anyone will be able to <color=#ff7777>ride</color> them.",
+      "keywords": [ "whales", "Crush", "plutonium", "ride" ]
+    },
+    {
+      "start": 21,
+      "title": "78",
+      "to": "Skinny Cow",
+      "from": "April the Fool",
+      "text": "Herr <color=#ff7777>Kohler</color> sends his regards. Slow progress continues on the <color=#ff7777>bears</color> but so far we've only been able to <color=#ff7777>augment</color> them with <color=#ff7777>Butter Knives</color>",
+      "keywords": [ "Kohler", "bears", "augment", "Butter Knives" ]
+    },
+    {
+      "start": 35,
+      "title": "82",
+      "to": "April the Fool",
+      "from": "Polar Grandpa",
+      "text": "Let Herr <color=#ff7777>Kohler</color> know that we are sending the <color=#ff7777>chainsaws</color>.  They will arrive at the <color=#ff7777>port</color> at <color=#ff7777>midnight</color>.",
+      "keywords": [ "Kohler", "chainsaws", "port", "midnight" ]
+    },
+    {
+      "start": 42,
+      "title": "3",
+      "to": "Polar Grandpa",
+      "from": "Double O Darren",
+      "text": "What is it with these guys from <color=#ff7777>Argentina</color>?  You think they can do a better job than <color=#ff7777>Finland</color>?  You just don't think big enough.  Our <color=#ff7777>whales</color> will crush their puny <color=#ff7777>bears</color> if it comes to that!",
+      "keywords": [ "Argentina", "Finland", "whales", "bears" ]
+    },
+    {
+      "start": 42,
+      "title": "325",
+      "to": "Polar Grandpa",
+      "from": "Double O Darren",
+      "text": "I'm sorry <color=#ff7777>Steve</color>.  We wont be shipping the <color=#ff7777>plutonium</color>.  Frankly, I think you'd have better luck with <color=#ff7777>penguins</color> than with <color=#ff7777>whales</color>",
+      "keywords": [ "Steve", "plutonium", "penguins", "whales" ]
     }
   ]
 }

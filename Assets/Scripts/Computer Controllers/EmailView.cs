@@ -27,7 +27,7 @@ namespace DeleteAfterReading
             save.clickHandler += onSave;
             eject.clickHandler += onEject;
             close.clickHandler += onClose;
-            delete.clickHandler += onDelete;
+            delete.clickHandler += onDelete;            
         }
 
         // Update is called once per frame
@@ -56,6 +56,16 @@ namespace DeleteAfterReading
             FillText.SetId("FillText");
 
             currentDisk = d;
+
+
+            if (ComputerController.instance.IsDiskFull())
+            {
+                save.text.color = Color.gray;
+            }
+            else
+            {
+                save.text.color = eject.text.color;
+            }
         }
 
         void initText()
@@ -88,9 +98,10 @@ namespace DeleteAfterReading
 
         public void onSave(string s)
         {
-            Debug.Log("save");
-
-            ComputerController.instance.SaveDisk(currentDisk);
+            if (!ComputerController.instance.IsDiskFull())
+            {
+                ComputerController.instance.SaveDisk(currentDisk);
+            }
             ComputerController.instance.diskInDrive.EjectDisk();
         }
 
