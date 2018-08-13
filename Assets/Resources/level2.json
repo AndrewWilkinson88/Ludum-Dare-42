@@ -6,7 +6,7 @@
     "prompt": "A foreign nation is hiring scientists to alter animals into high tech killing machines.  Its your job to find the nation, the name of the lead scientist, the type of animal, how they're altering them, and where their headquarters is located.",
     "solutionPrompt": "[1] hired [2] to attach [3] to [4] at their secret lab in [5]",
     "keywords": [ "Russia", "Kohler", "chainsaws", "bears", "Argentina" ],
-    "headlineSuccess": "Russian plot foiled! Chainsaws removed from bears in Argentina."
+    "headlineSuccess": "Russian plot foiled! Chainsaws removed from bears in Argentina rendering them 50% less deadly."
   },
   "disks": [    
     {
