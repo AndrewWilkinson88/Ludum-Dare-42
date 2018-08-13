@@ -111,10 +111,19 @@ namespace DeleteAfterReading
         {
             if (curMode == Mode.SOLVER)
                 return;
-            curMode = Mode.SOLVER;
-            SetActiveScreen(solverView.gameObject);
-            timerText.gameObject.SetActive(false);
-            solverView.SetupSolver(levelController.currentLevel.puzzle, desktopView.GetKeywords());
+
+            List<string> keywords = desktopView.GetKeywords();
+            if (keywords.Count > 0)
+            {
+                curMode = Mode.SOLVER;
+                SetActiveScreen(solverView.gameObject);
+                timerText.gameObject.SetActive(false);
+                solverView.SetupSolver(levelController.currentLevel.puzzle, keywords);
+            }
+            else
+            {
+                ComputerController.instance.levelController.ShowResult(false, "CIA somehow manages to find no clues!");
+            }
         }
 
         public void ShowTitleScreen()
